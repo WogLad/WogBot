@@ -1,0 +1,181 @@
+{
+    "miners": {
+        "0": {
+            "name": "Wendy",
+            "currentPickaxe": "Iron Pickaxe",
+            "currentInventory": [
+                "Iron Pickaxe",
+                "Ore",
+                "Ore"
+            ]
+        },
+        "1": {
+            "name": "Clifford",
+            "currentPickaxe": "Stone Pickaxe",
+            "currentInventory": [
+                "Stone Pickaxe",
+                "Ore",
+                "Ore"
+            ]
+        },
+        "2": {
+            "name": "Laura",
+            "currentPickaxe": "Stone Pickaxe",
+            "currentInventory": [
+                "Stone Pickaxe",
+                "Ore",
+                "Ore"
+            ]
+        },
+        "3": {
+            "name": "Elsie",
+            "currentPickaxe": "Copper Pickaxe",
+            "currentInventory": [
+                "Copper Pickaxe",
+                "Ore",
+                "Ore"
+            ]
+        },
+        "4": {
+            "name": "Nick",
+            "currentPickaxe": "Obsidian Pickaxe",
+            "currentInventory": [
+                "Obsidian Pickaxe",
+                "Ore",
+                "Ore"
+            ]
+        },
+        "5": {
+            "name": "Joan",
+            "currentPickaxe": "Adamantite Pickaxe",
+            "currentInventory": [
+                "Adamantite Pickaxe",
+                "Ore"
+            ]
+        }
+    },
+    "fishermen": {
+        "0": {
+            "name": "Claudia",
+            "currentFishingRod": "Iron Fishing Rod",
+            "currentInventory": [
+                "Iron Fishing Rod"
+            ]
+        },
+        "1": {
+            "name": "Patricia",
+            "currentFishingRod": "Stone Fishing Rod",
+            "currentInventory": [
+                "Stone Fishing Rod"
+            ]
+        },
+        "2": {
+            "name": "Emil",
+            "currentFishingRod": "Stone Fishing Rod",
+            "currentInventory": [
+                "Stone Fishing Rod"
+            ]
+        },
+        "3": {
+            "name": "Michael",
+            "currentFishingRod": "Copper Fishing Rod",
+            "currentInventory": [
+                "Copper Fishing Rod"
+            ]
+        },
+        "4": {
+            "name": "Alex",
+            "currentFishingRod": "Obsidian Fishing Rod",
+            "currentInventory": [
+                "Obsidian Fishing Rod"
+            ]
+        }
+    },
+    "woodcutters": {
+        "0": {
+            "name": "Barbara",
+            "currentAxe": "Iron Axe",
+            "currentInventory": [
+                "Iron Axe"
+            ]
+        },
+        "1": {
+            "name": "Judy",
+            "currentAxe": "Stone Axe",
+            "currentInventory": [
+                "Stone Axe"
+            ]
+        },
+        "2": {
+            "name": "Sheila",
+            "currentAxe": "Stone Axe",
+            "currentInventory": [
+                "Stone Axe"
+            ]
+        },
+        "3": {
+            "name": "Clair",
+            "currentAxe": "Copper Axe",
+            "currentInventory": [
+                "Copper Axe"
+            ]
+        },
+        "4": {
+            "name": "Johnnie",
+            "currentAxe": "Obsidian Axe",
+            "currentInventory": [
+                "Obsidian Axe"
+            ]
+        }
+    },
+    "hunters": {
+        "0": {
+            "name": "John",
+            "currentBow": "Iron Bow",
+            "currentInventory": [
+                "Iron Bow",
+                "Meat"
+            ]
+        },
+        "1": {
+            "name": "Deborah",
+            "currentBow": "Stone Bow",
+            "currentInventory": [
+                "Stone Bow",
+                "Meat"
+            ]
+        },
+        "2": {
+            "name": "Robert",
+            "currentBow": "Stone Bow",
+            "currentInventory": [
+                "Stone Bow",
+                "Meat"
+            ]
+        },
+        "3": {
+            "name": "Stephen",
+            "currentBow": "Copper Bow",
+            "currentInventory": [
+                "Copper Bow",
+                "Meat"
+            ]
+        },
+        "4": {
+            "name": "Devon",
+            "currentBow": "Obsidian Bow",
+            "currentInventory": [
+                "Obsidian Bow",
+                "Meat"
+            ]
+        },
+        "5": {
+            "name": "Patrick",
+            "currentBow": "Obsidian Bow",
+            "currentInventory": [
+                "Obsidian Bow",
+                "Meat"
+            ]
+        }
+    }
+}

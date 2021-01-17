@@ -70,7 +70,7 @@ def class_to_dict(classObject):
 def list_to_json(listVar):
 	dictVar = {}
 	for x in range(len(listVar)):
-		newD = {str(x):listVar[x]}
+		newD = {str(x):listVar[x].__dict__}
 		dictVar = dictVar | newD
 	return dictVar
 
@@ -89,7 +89,7 @@ def dict_to_list_of_fishermen(jsonDict):
 	for x in range(len(list(jsonDict.keys()))):
 		foo = Fisherman()
 		foo.name = jsonDict[str(x)]["name"]
-		foo.currentPickaxe = jsonDict[str(x)]["currentFishingRod"]
+		foo.currentFishingRod = jsonDict[str(x)]["currentFishingRod"]
 		foo.currentInventory = jsonDict[str(x)]["currentInventory"]
 		listVar.append(foo)
 	return listVar
@@ -99,7 +99,7 @@ def dict_to_list_of_woodcutters(jsonDict):
 	for x in range(len(list(jsonDict.keys()))):
 		foo = Woodcutter()
 		foo.name = jsonDict[str(x)]["name"]
-		foo.currentPickaxe = jsonDict[str(x)]["currentAxe"]
+		foo.currentAxe = jsonDict[str(x)]["currentAxe"]
 		foo.currentInventory = jsonDict[str(x)]["currentInventory"]
 		listVar.append(foo)
 	return listVar
@@ -109,7 +109,7 @@ def dict_to_list_of_hunters(jsonDict):
 	for x in range(len(list(jsonDict.keys()))):
 		foo = Hunter()
 		foo.name = jsonDict[str(x)]["name"]
-		foo.currentPickaxe = jsonDict[str(x)]["currentBow"]
+		foo.currentBow = jsonDict[str(x)]["currentBow"]
 		foo.currentInventory = jsonDict[str(x)]["currentInventory"]
 		listVar.append(foo)
 	return listVar
@@ -148,13 +148,38 @@ async def dice(ctx):
 
 isTutorialOver = True #Should be changed to false when exporting the game.
 
-minersJson = open("miners.json", "r")
+file = open("data.json", "r")
+jsonData = json.loads(file.read())
 
 humans = []
-miners = dict_to_list_of_miners(json.loads(minersJson.read()))
-fishermen = []
-woodcutters = []
-hunters = []
+miners = dict_to_list_of_miners(jsonData["miners"])
+fishermen = dict_to_list_of_fishermen(jsonData["fishermen"])
+woodcutters = dict_to_list_of_woodcutters(jsonData["woodcutters"])
+hunters = dict_to_list_of_hunters(jsonData["hunters"])
+
+def update_humans_list():
+	for miner in miners:
+		humans.append(miner)
+	for fisherman in fishermen:
+		humans.append(fisherman)
+	for woodcutter in woodcutters:
+		humans.append(woodcutter)
+	for hunter in hunters:
+		humans.append(hunter)
+
+update_humans_list()
+
+def update_data_json():
+	updatedJsonData = {"miners": "", "fishermen": "", "woodcutters": "", "hunters": ""}
+
+	updatedJsonData["miners"] = list_to_json(miners)
+	updatedJsonData["fishermen"] = list_to_json(fishermen)
+	updatedJsonData["woodcutters"] = list_to_json(woodcutters)
+	updatedJsonData["hunters"] = list_to_json(hunters)
+
+	dataJson = open("data.json", "w")
+	dataJson.write(json.dumps(updatedJsonData, indent=4))
+	dataJson.close()
 
 @client.command(aliases=['cr'])
 async def create(ctx, *, humanTypeToCreate):
@@ -186,6 +211,7 @@ async def create(ctx, *, humanTypeToCreate):
 	else:
 		embed = discord.Embed(title='Human Creation Failed', description="You didn't specify a valid human type.", colour=discord.Colour.dark_red())
 		await ctx.send(embed=embed)
+	update_data_json()
 
 @client.command(aliases=['li'])
 async def list(ctx, *, humanTypeToList):
@@ -226,8 +252,7 @@ async def inventory(ctx, *, humanName):
 			embed = discord.Embed(title=f"{human.name}'s Inventory", colour = discord.Colour.green())
 			for item in human.currentInventory:
 				embed.add_field(name=item, value='ITEM', inline=False)
-
-	await ctx.send(embed=embed)
+			await ctx.send(embed=embed)
 
 @client.command()
 async def mine(ctx):
@@ -243,6 +268,7 @@ async def mine(ctx):
 		embed.add_field(name=miner.name, value='has received ore.', inline=False)
 
 	await ctx.send(embed=embed)
+	update_data_json()
 
 @client.command()
 async def fish(ctx):
@@ -258,6 +284,7 @@ async def fish(ctx):
 		embed.add_field(name=fisherman.name, value='has received fish.', inline=False)
 
 	await ctx.send(embed=embed)
+	update_data_json()
 
 @client.command()
 async def woodcut(ctx):
@@ -273,6 +300,7 @@ async def woodcut(ctx):
 		embed.add_field(name=woodcutter.name, value='has received wood.', inline=False)
 
 	await ctx.send(embed=embed)
+	update_data_json()
 
 @client.command()
 async def hunt(ctx):
@@ -288,5 +316,6 @@ async def hunt(ctx):
 		embed.add_field(name=hunter.name, value='has received meat.', inline=False)
 
 	await ctx.send(embed=embed)
+	update_data_json()
 
 client.run('NzgyOTcxMDYyMDI3MTU3NTY1.X8T8oA.r9lbyUOVVAY2NJuizORVqGzUTr4')
