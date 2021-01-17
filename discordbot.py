@@ -318,4 +318,4 @@ async def hunt(ctx):
 	await ctx.send(embed=embed)
 	update_data_json()
 
-client.run('NzgyOTcxMDYyMDI3MTU3NTY1.X8T8oA.r9lbyUOVVAY2NJuizORVqGzUTr4')
+client.run(TOKEN)
